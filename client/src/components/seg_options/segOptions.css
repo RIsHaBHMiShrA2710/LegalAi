@@ -1,0 +1,54 @@
+.segmented-controls {
+    display: flex;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: #e2e2e9;
+    height: 2.5rem;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 120px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
+  }
+  
+  .segmented-option {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 150px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .segmented-option:first-child {
+    background-color: #ff9d00;
+    color: white;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+  
+  .segmented-option:nth-child(2) {
+    background-color: #6cb6ca;
+    color: rgb(0, 0, 0);
+  }
+  
+  .segmented-option:last-child {
+    background-color: #2cb14d;
+    color: white;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+  
+  .segmented-option.active {
+    color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.15);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border: black;
+  }
+  
+  .segmented-option:not(:last-child) {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  

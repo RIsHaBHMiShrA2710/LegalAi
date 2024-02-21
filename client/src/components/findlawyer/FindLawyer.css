@@ -1,0 +1,138 @@
+
+.lawyer_section {
+    background-color:#fff;
+    border-radius: 8px;
+    max-width: 500px;
+    padding: 20px;
+    margin: 0px auto;
+    margin-top: 8%;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .lawyer_section h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .lawyer_section label {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .lawyer_section select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="black" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.5em center;
+    background-size: 2% auto;
+    margin-bottom: 20px;
+  }
+  
+  .lawyer_section button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .lawyer_section button:hover {
+    background-color: #0056b3;
+  }
+  .search:hover{
+    background-color: #555;
+    transform-style: calc(3.0);
+  }
+  
+  .lawyer_section p {
+    font-size: 16px;
+    margin-top: 16px;
+    color: #666;
+  }
+  
+.findlawyer_map{
+  justify-content: center;
+  padding: 20px;
+  margin: 10px;
+}
+.FindLawyer_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.FindLawyer_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Lawyer section styling */
+.lawyer_section {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* Dropdown styling */
+#lawyerType {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Lawyer details styling */
+.lawyer_details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Lawyer card styling */
+.lawyer_card {
+  width: 360px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Lawyer image styling */
+.lawyer_image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Lawyer info styling */
+.lawyer_info {
+  flex-grow: 1;
+  font-weight: 500;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .lawyer_card {
+    width: 100%;
+  }
+}

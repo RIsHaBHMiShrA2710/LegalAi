@@ -1,0 +1,51 @@
+.Navbar_items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    background-color: #7397ac;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    width: 100%;
+    height: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.Navbar_heading{
+
+    font-size: 32px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 2%;
+    color: black;
+    cursor: pointer;
+}
+
+.Navbar_menu{
+
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    grid-gap: 10px;
+    list-style: none;
+    align-items: center;
+    justify-content: end;
+    text-align: center;
+    margin-right: 3%;
+    font-size: 1.3rem;
+}
+
+.Navbar_links{
+
+    text-decoration: none;
+    color: black;
+    padding: 0.7rem 1rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.Navbar_links:hover{
+
+    background-color: #c1bebe1f;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out 0s;
+    color: lightgoldenrodyellow;
+}

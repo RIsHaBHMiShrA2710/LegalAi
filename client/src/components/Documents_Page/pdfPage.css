@@ -1,0 +1,48 @@
+
+.custom-card-image {
+    width: auto;
+    height: 40%;
+}
+
+.custom-card:hover {
+    background-color: #85cfd7; 
+    box-shadow: 2px 12px 15px #999;
+    transition: all 0.4s ease-in-out 0s;
+    transform: translateY(-5px);
+}
+
+
+.pdf-page-container {
+    margin-top: 20px;
+    background-color: #f9f1d7;
+}
+.custom-card-row {
+    margin: 110px 50px;
+}
+
+.custom-card-col {
+    padding: 25px;
+}
+
+.download-button{
+    margin-left:30%;
+}
+
+.expand-link {
+    cursor: pointer;
+    color: blue; 
+    text-decoration: underline;
+}
+
+.iframe_pdf {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+  
+.iframe_pdf iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
