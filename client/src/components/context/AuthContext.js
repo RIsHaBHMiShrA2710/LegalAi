@@ -1,14 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Create the context
 const AuthContext = createContext();
 
-// Create the AuthProvider component
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Check if the user is already authenticated (e.g., via a token stored in localStorage)
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       try {
@@ -18,8 +15,6 @@ export function AuthProvider({ children }) {
       }
     }
   }, []);
-
-  // login function
   const login = (jwtToken, userData) => {
     setUser({
       token: jwtToken,
@@ -27,10 +22,7 @@ export function AuthProvider({ children }) {
     });
     localStorage.setItem('user', JSON.stringify({ token: jwtToken, user: userData }));
   };
-  
-  // logout function
   const logout = () => {
-    // Remove the JWT token from storage
     localStorage.removeItem('user');
     setUser(null);
   };
@@ -42,8 +34,6 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-
-// Create a hook to access the context
 export function useAuth() {
   return useContext(AuthContext);
 }

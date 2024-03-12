@@ -1,33 +1,46 @@
 
 .custom-card-image {
     width: auto;
-    height: 40%;
+    height: 200px;
+    border-radius: 30px;
+    border: black;
+    border-width: 10px;
 }
-
+.custom-card{
+    border-radius: 30px;
+}
+.custom-card-title{
+    background-color: #dedbdb;
+    padding: 5px;
+    border-radius: 30px;
+}
+.card-body{
+    padding: unset;
+    padding: 5px;
+}
 .custom-card:hover {
-    background-color: #85cfd7; 
+    background-color: #d7d385; 
     box-shadow: 2px 12px 15px #999;
     transition: all 0.4s ease-in-out 0s;
-    transform: translateY(-5px);
+    
 }
 
 
 .pdf-page-container {
     margin-top: 20px;
-    background-color: #f9f1d7;
+}
+.pdfButtons{
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 .custom-card-row {
-    margin: 110px 50px;
+    margin: 110px 0px;
 }
 
 .custom-card-col {
     padding: 25px;
 }
-
-.download-button{
-    margin-left:30%;
-}
-
 .expand-link {
     cursor: pointer;
     color: blue; 

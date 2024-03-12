@@ -95,7 +95,7 @@ const PdfPage = () => {
             <CCard className="custom-card h-100">
               <CCardImage orientation="top" src={card.imageSrc} className="custom-card-image" />
               <CCardBody>
-                <CCardTitle>{card.title}</CCardTitle>
+                <CCardTitle className="custom-card-title">{card.title}</CCardTitle>
                 <hr />
                 <CCardText>
                   {expandedCardId === card.id ? card.text : truncateText(card.text, 80)}
@@ -108,6 +108,7 @@ const PdfPage = () => {
                     </span>
                   )}
                 </CCardText>
+                <div className="pdfButtons">
                 <CButton
                   color="info"
                   className="preview-button"
@@ -118,6 +119,8 @@ const PdfPage = () => {
                 <CButton color="success" className="download-button" onClick={() => window.open(card.pdf_link, '_blank')}>
                   Download
                 </CButton>
+                </div>
+                
               </CCardBody>
             </CCard>
           </CCol>

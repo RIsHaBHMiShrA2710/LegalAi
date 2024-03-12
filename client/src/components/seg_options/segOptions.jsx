@@ -17,19 +17,19 @@ function SegOptions() {
         className={`segmented-option ${activeSegment === '/' ? 'active' : ''}`}
         onClick={() => handleNavigation('/')}
       >
-        Home
+        BOT
       </button>
       <button
         className={`segmented-option ${activeSegment === '/pdf' ? 'active' : ''}`}
         onClick={() => handleNavigation('/pdf')}
       >
-        PDF
+        DOCs
       </button>
       <button
         className={`segmented-option ${activeSegment === '/findlawyer' ? 'active' : ''}`}
         onClick={() => handleNavigation('/findlawyer')}
       >
-        Find Lawyer
+        LAWYERS
       </button>
     </div>
   );

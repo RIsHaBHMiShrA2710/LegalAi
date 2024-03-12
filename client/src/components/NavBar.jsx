@@ -1,30 +1,30 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faScaleBalanced, faGavel} from '@fortawesome/free-solid-svg-icons';
+import { faScaleBalanced, faGavel, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Button, Modal, Form, Spinner } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './NavBar.css';
-
-// Assuming you have a context for user authentication
 import { useAuth } from './context/AuthContext';
 
+
 const NavBar = () => {
-    const navigate = useNavigate();
-    
     const [showRegisterModal, setShowRegisterModal] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [registrationData, setRegistrationData] = useState({ username: '', password: '' });
     const [loginData, setLoginData] = useState({ username: '', password: '' });
     const [loginLoading, setLoginLoading] = useState(false);
+    const [burgerOpen, setBurgerOpen] = useState(false);
     const { user, login, logout } = useAuth();
     const handleLogout = () => {
         try {
             logout();
-            navigate("/");
+            window.location.reload();
         } catch (error) {
             console.error("Error:", error);
         }
+    };
+    const toggleBurger = () => {
+        setBurgerOpen(!burgerOpen);
     };
 
     const handleRegister = async () => {
@@ -65,14 +65,19 @@ const NavBar = () => {
     return (
         <>
             <nav className="Navbar_items">
-                <h1 className="Navbar_heading">
+                <h1 className="Navbar_links Navbar_heading">
                     Samvidhan.Ai <FontAwesomeIcon icon={faScaleBalanced} className="Navbar_logo" />
                 </h1>
-                <ul className="Navbar_menu">
+                <div className="burger" onClick={toggleBurger}>
+                    <FontAwesomeIcon icon={faBars} />
+                </div>
+                <ul className={`Navbar_menu ${burgerOpen ? 'active' : ''}`}>
                     <li>
-                        <a href="https://legislative.gov.in/constitution-of-india/" className="Navbar_links">
-                            <FontAwesomeIcon icon={faGavel}/> Legal Laws
-                        </a>
+                        
+                            <a href="https://legislative.gov.in/constitution-of-india/" className="Navbar_links">
+                                <FontAwesomeIcon icon={faGavel}/> Legal Laws
+                            </a>
+                        
                     </li>
                     <li>
                         {user ? (
@@ -81,8 +86,10 @@ const NavBar = () => {
                             </Button>
                         ) : (
                             <>
-                                <Button variant="link" onClick={() => setShowRegisterModal(true)} className="Navbar_links">Register</Button>
-                                <Button variant="link" onClick={() => setShowLoginModal(true)} className="Navbar_links">Login</Button>
+                                    <Button variant="link" onClick={() => setShowRegisterModal(true)} className="Navbar_links Navbar_links_register">Register</Button>
+                                    <Button variant="link" onClick={() => setShowLoginModal(true)} className="Navbar_links Navbar_links_login">Login</Button>
+                                
+                                
                             </>
                         )}
                     </li>
