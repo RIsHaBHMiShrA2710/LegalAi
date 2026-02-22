@@ -25,10 +25,10 @@
 | Layer | Technology |
 |---|---|
 | Frontend | React 18, React Router, React Bootstrap, Vite |
-| Backend | Node.js, Express.js |
-| Database | MongoDB (via Mongoose) |
-| AI | OpenAI API |
-| Auth | JWT, Passport.js (Google OAuth2) |
+| Backend | Python 3.11, FastAPI, Uvicorn |
+| Database | MongoDB Atlas (via Motor async driver) |
+| AI | OpenAI API (GPT-3.5-turbo) |
+| Auth | JWT (python-jose), passlib/bcrypt |
 | Maps | React Leaflet, React Map GL |
 
 ---
@@ -38,7 +38,7 @@
 ```
 SamvidhanAi/
 ├── client/               # React frontend (Vite)
-│   ├── public/           # Static assets (images, CSS)
+│   ├── public/           # Static assets
 │   ├── src/
 │   │   ├── components/   # React components
 │   │   │   ├── Bot/      # AI chatbot UI
@@ -51,14 +51,20 @@ SamvidhanAi/
 │   │   └── main.jsx      # App entry point
 │   ├── index.html        # Vite root HTML
 │   └── vite.config.js
-├── server/               # Express backend
-│   ├── config/           # DB & env config
-│   ├── controllers/      # Route handlers
-│   ├── middleware/       # Auth middleware
-│   ├── models/           # Mongoose models
-│   ├── utils/
-│   └── server.js         # Entry point
-└── BasicDesign/          # Design mockups/assets
+├── server/
+│   ├── python/           # ← FastAPI backend (active)
+│   │   ├── main.py       # App entry point, CORS, route registration
+│   │   ├── config.py     # Settings from .env
+│   │   ├── database.py   # Motor async MongoDB client
+│   │   ├── models.py     # Pydantic schemas
+│   │   ├── auth.py       # JWT + bcrypt helpers
+│   │   ├── dependencies.py # FastAPI auth dependency
+│   │   ├── routers/
+│   │   │   ├── auth.py      # POST /register, POST /login
+│   │   │   └── messages.py  # AI chat + history routes
+│   │   └── requirements.txt
+│   └── (legacy Node.js files kept for reference)
+└── BasicDesign/
 ```
 
 ---
@@ -67,11 +73,10 @@ SamvidhanAi/
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v18+
-- [npm](https://www.npmjs.com/) v9+
-- A [MongoDB](https://www.mongodb.com/) instance (local or Atlas)
+- [Node.js](https://nodejs.org/) v18+ & npm v9+
+- [Python](https://python.org/) 3.10+
+- A [MongoDB Atlas](https://www.mongodb.com/atlas) cluster
 - An [OpenAI API key](https://platform.openai.com/)
-- Google OAuth credentials *(optional, for Google login)*
 
 ### 1. Clone the repository
 
@@ -80,35 +85,35 @@ git clone https://github.com/RIsHaBHMiShrA2710/LegalAi.git
 cd LegalAi
 ```
 
-### 2. Set up the Backend
+### 2. Set up the Backend (FastAPI)
 
 ```bash
-cd server
-npm install
+cd server/python
+pip install -r requirements.txt
 ```
 
-Create a `.env` file in the `server/` directory:
+Create a `.env` file inside `server/python/`:
 
 ```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
+MONGOAUTH=your_mongodb_connection_string
 OPENAI_API_KEY=your_openai_api_key
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
+JWT_SECRET=your_strong_jwt_secret
+SESSION_SECRET=your_session_secret
+PORT=5000
 ```
 
 Start the server:
 
 ```bash
-# Development (with auto-reload)
-npm run dev
+# Development (auto-reload)
+uvicorn main:app --reload --port 5000
 
 # Production
-npm start
+uvicorn main:app --port 5000 --workers 4
 ```
 
-The backend will run at `http://localhost:5000`.
+The API runs at `http://localhost:5000`.  
+Interactive Swagger docs: `http://localhost:5000/docs`
 
 ### 3. Set up the Frontend
 
