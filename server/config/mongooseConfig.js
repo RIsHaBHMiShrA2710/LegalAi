@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { MONGOAUTH } = require('./dotenvConfig'); // Load environment variables
+const { MONGOAUTH } = require('./dotenvConfig'); 
 
 mongoose.connect(MONGOAUTH, {
   useNewUrlParser: true,

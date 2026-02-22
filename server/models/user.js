@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+  googleId: String,
   username: String,
-  password: String,
+  email: String, 
+  password: { type: String, select: false }, 
   jwtToken: String,
   history: [
     {

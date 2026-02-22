@@ -14,7 +14,7 @@ const NavBar = () => {
     const [loginData, setLoginData] = useState({ username: '', password: '' });
     const [loginLoading, setLoginLoading] = useState(false);
     const [burgerOpen, setBurgerOpen] = useState(false);
-    const { user, login, logout } = useAuth();
+    const { user, login, logout, loginWithGoogle } = useAuth();
     const handleLogout = () => {
         try {
             logout();
@@ -51,7 +51,7 @@ const NavBar = () => {
                 password: loginData.password,
             });
 
-            if (response.status === 200) { 
+            if (response.status === 200) {
                 login(response.data.jwtToken, response.data.user);
                 setShowLoginModal(false);
             }
@@ -73,11 +73,11 @@ const NavBar = () => {
                 </div>
                 <ul className={`Navbar_menu ${burgerOpen ? 'active' : ''}`}>
                     <li>
-                        
-                            <a href="https://legislative.gov.in/constitution-of-india/" className="Navbar_links">
-                                <FontAwesomeIcon icon={faGavel}/> Legal Laws
-                            </a>
-                        
+
+                        <a href="https://legislative.gov.in/constitution-of-india/" className="Navbar_links">
+                            <FontAwesomeIcon icon={faGavel} /> Legal Laws
+                        </a>
+
                     </li>
                     <li>
                         {user ? (
@@ -86,10 +86,10 @@ const NavBar = () => {
                             </Button>
                         ) : (
                             <>
-                                    <Button variant="link" onClick={() => setShowRegisterModal(true)} className="Navbar_links Navbar_links_register">Register</Button>
-                                    <Button variant="link" onClick={() => setShowLoginModal(true)} className="Navbar_links Navbar_links_login">Login</Button>
+                                <Button variant="link" onClick={() => setShowRegisterModal(true)} className="Navbar_links Navbar_links_register">Register</Button>
+                                <Button variant="link" onClick={() => setShowLoginModal(true)} className="Navbar_links Navbar_links_login">Login</Button>
                                 
-                                
+
                             </>
                         )}
                     </li>
@@ -134,6 +134,9 @@ const NavBar = () => {
                     <Button variant="primary" onClick={handleRegister}>
                         Register
                     </Button>
+                    <Button variant="link" onClick={loginWithGoogle} className="Navbar_links Navbar_links_google">
+                                    Login with Google
+                                </Button>
                 </Modal.Footer>
             </Modal>
 
